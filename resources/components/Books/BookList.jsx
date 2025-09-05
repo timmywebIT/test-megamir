@@ -1,12 +1,13 @@
 // resources/js/components/BookList.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useBooks from '../hooks/useBooks'; // 👈 используем хук
+import useBooks from '../../hooks/Books/useBooks';
+import useBook from "../../hooks/Books/useBook"; // 👈 используем хук
 
 export default function BookList() {
-    const { books, loading } = useBooks();
+    const { books, error } = useBooks();
 
-    if (loading) return <p>Загрузка книг...</p>;
+    if (error) return <p>Не удалось загрузить книги. Попробуйте позже.</p>;
 
     return (
         <div>

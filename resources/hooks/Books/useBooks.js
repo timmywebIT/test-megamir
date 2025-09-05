@@ -3,6 +3,7 @@ import axios from "axios";
 
 export default function useBooks() {
     const [books, setBooks] = useState([])
+    const [error, setError] = useState(null);
 
     useEffect(() => {
        const fetchBooks = async () => {
@@ -11,10 +12,11 @@ export default function useBooks() {
                setBooks(res.data.data)
            } catch (error) {
                console.error('Ошибка при загрузке книг', error)
+               setError(error)
            }
        }
         fetchBooks()
 
     }, []);
-    return {books}
+    return { books, error }
 }

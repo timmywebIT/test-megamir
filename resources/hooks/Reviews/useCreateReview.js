@@ -3,18 +3,19 @@ import axios from 'axios';
 
 export default function useReviewSubmit(bookId, onSuccess) {
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const submitReview = async (reviewData) => {
         setLoading(true);
         try {
             const res = await axios.post(`/api/books/${bookId}/reviews`, reviewData);
             onSuccess(res.data); //
-        } catch (err) {
-            console.error('Ошибка при отправке отзыва:', err);
+        } catch (error) {
+            console.error('Ошибка при отправке отзыва:', error);
+            setError(error)
         } finally {
             setLoading(false);
         }
     };
-
-    return { submitReview, loading };
+    return { error, submitReview, loading };
 }

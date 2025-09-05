@@ -1,8 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import BookList from '../components/BookList';
-import BookDetails from '../components/BookDetails';
+import BookList from '../components/Books/BookList';
+import BookDetails from '../components/Books/BookDetails';
 
 function App() {
     return (
