@@ -7,6 +7,7 @@ export default function useReviewSubmit(bookId, onSuccess) {
 
     const submitReview = async (reviewData) => {
         setLoading(true);
+        setError(null);
         try {
             const res = await axios.post(`/api/books/${bookId}/reviews`, reviewData);
             onSuccess(res.data); //

@@ -7,6 +7,7 @@ export default function useBooks() {
 
     useEffect(() => {
        const fetchBooks = async () => {
+           setError(null);
            try {
                const res = await axios.get('/api/books');
                setBooks(res.data.data)

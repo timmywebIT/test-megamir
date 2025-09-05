@@ -6,6 +6,7 @@ export default function useBook(id) {
     const [error, setError] = useState(null);
 
     const fetchBook = async () => {
+        setError(null);
         try {
             const res = await axios.get(`/api/books/${id}?include=reviews`);
             setBook(res.data.data);
