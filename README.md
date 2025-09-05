@@ -2,6 +2,17 @@
 
 Минимальный проект на Laravel + React для управления книгами и отзывами.
 
+## Настройка проекта
+
+```env
+DB_CONNECTION=mysql
+ DB_HOST=127.0.0.1
+ DB_PORT=8889
+ DB_DATABASE=megamir
+ DB_USERNAME=root
+ DB_PASSWORD=root
+```
+
 ## 📁 Структура Backend 
 
 - **app/http/controllers/main/api**
