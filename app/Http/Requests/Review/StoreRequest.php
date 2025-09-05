@@ -27,14 +27,4 @@ class StoreRequest extends FormRequest
             'comment' => 'nullable|string',
         ];
     }
-    public function messages(): array
-    {
-        return [
-            'username.required' => 'Пожалуйста, укажите имя.',
-            'username.max' => 'Имя не должно превышать 50 символов.',
-            'rating.required' => 'Поставьте оценку от 1 до 5.',
-            'rating.min' => 'Минимальная оценка — 1.',
-            'rating.max' => 'Максимальная оценка — 5.',
-        ];
-    }
 }
