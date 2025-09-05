@@ -16,7 +16,8 @@ export default function BookList() {
                     <li key={book.id} className={styles.card}>
                         <Link to={`/books/${book.id}`} className={styles.link}>
                             <div>
-                                <strong className={styles.title}>{book.title}</strong>
+                                <strong className={styles.title}></strong>
+                                <p><strong>Название:</strong> {book.name}</p>
                                 <p><strong>Автор:</strong> {book.author}</p>
                                 <p><strong>Жанр:</strong> {book.genre}</p>
                                 <p><strong>Описание:</strong> {book.description?.slice(0, 50)}...</p>
