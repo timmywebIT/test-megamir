@@ -1,20 +1,19 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import HelloUser from "../components/HelloUser";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BookList from '../components/BookList';
+import BookDetails from '../components/BookDetails';
 
-// 👇 Вот здесь ты определяешь компонент App
 function App() {
     return (
-        <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-            <h1>Привет, React работает!</h1>
-            <HelloUser name="Тимофей" />
-
-            <hr style={{ margin: '2rem 0' }} />
-
-            <BookList /> {/* 👈 Вот здесь ты вставляешь компонент списка книг */}
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/books" element={<BookList />} />
+                <Route path="/books/:id" element={<BookDetails />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
+
 const root = createRoot(document.getElementById('app'));
 root.render(<App />);
