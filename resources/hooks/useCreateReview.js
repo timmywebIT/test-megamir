@@ -1,20 +1,20 @@
-import {useState, useEffect} from "react";
-import axios from "axios";
+import { useState } from 'react';
+import axios from 'axios';
 
-export default function useBooks() {
-    const [books, setBooks] = useState([])
+export default function useReviewSubmit(bookId, onSuccess) {
+    const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        const fetchBooks = async () => {
-            try {
-                const res = await axios.get('/api/books');
-                setBooks(res.data.data)
-            } catch (error) {
-                console.error('Ошибка при загрузке книг', error)
-            }
+    const submitReview = async (reviewData) => {
+        setLoading(true);
+        try {
+            const res = await axios.post(`/api/books/${bookId}/reviews`, reviewData);
+            onSuccess(res.data); //
+        } catch (err) {
+            console.error('Ошибка при отправке отзыва:', err);
+        } finally {
+            setLoading(false);
         }
-        fetchBooks()
+    };
 
-    }, []);
-    return {books}
+    return { submitReview, loading };
 }

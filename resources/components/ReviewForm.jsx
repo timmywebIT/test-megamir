@@ -1,25 +1,19 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import useCreateReview from '../hooks/useCreateReview';
 
 export default function ReviewForm({ bookId, onReviewAdded }) {
     const [username, setUsername] = useState('');
     const [rating, setRating] = useState(5);
     const [comment, setComment] = useState('');
+    const { submitReview, loading } = useCreateReview(bookId, onReviewAdded);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         const reviewData = { username, rating, comment };
-
-        try {
-            const res = await axios.post(`/api/books/${bookId}/reviews`, reviewData);
-            onReviewAdded(res.data); // 👈 обновляем родительский компонент
-            setUsername('');
-            setRating(5);
-            setComment('');
-        } catch (err) {
-            console.error('Ошибка при отправке отзыва:', err);
-        }
+        await submitReview(reviewData);
+        setUsername('');
+        setRating(5);
+        setComment('');
     };
 
     return (
@@ -48,7 +42,9 @@ export default function ReviewForm({ bookId, onReviewAdded }) {
                 onChange={(e) => setComment(e.target.value)}
             />
             <br />
-            <button type="submit">Отправить</button>
+            <button type="submit" disabled={loading}>
+                {loading ? 'Отправка...' : 'Отправить'}
+            </button>
         </form>
     );
 }
