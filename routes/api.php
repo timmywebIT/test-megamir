@@ -7,4 +7,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/books', IndexController::class);
 Route::get('/books/{book}', ShowController::class);
-Route::get('/books/{book}/reviews', StoreController::class);
+Route::post('/books/{book}/reviews', StoreController::class);
