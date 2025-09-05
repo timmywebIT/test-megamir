@@ -1,0 +1,40 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.heading {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.meta {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.description {
+    margin-bottom: 2rem;
+    font-style: italic;
+    color: #555;
+}
+
+.reviewList {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.reviewItem {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background-color: #fafafa;
+}
+
+.reviewItem strong {
+    color: #34495e;
+}

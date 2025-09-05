@@ -1,8 +1,7 @@
-// resources/js/components/BookList.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useBooks from '../../hooks/Books/useBooks';
-import useBook from "../../hooks/Books/useBook"; // 👈 используем хук
+import styles from './css/BookList.module.css';
 
 export default function BookList() {
     const { books, error } = useBooks();
@@ -10,14 +9,14 @@ export default function BookList() {
     if (error) return <p>Не удалось загрузить книги. Попробуйте позже.</p>;
 
     return (
-        <div>
-            <h2>Список книг</h2>
-            <ul>
+        <div className={styles.container}>
+            <h2 className={styles.heading}>Список книг</h2>
+            <ul className={styles.list}>
                 {books.map(book => (
-                    <li key={book.id} style={{ marginBottom: '1rem' }}>
-                        <Link to={`/books/${book.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <li key={book.id} className={styles.card}>
+                        <Link to={`/books/${book.id}`} className={styles.link}>
                             <div>
-                                <strong>{book.title}</strong>
+                                <strong className={styles.title}>{book.title}</strong>
                                 <p><strong>Автор:</strong> {book.author}</p>
                                 <p><strong>Жанр:</strong> {book.genre}</p>
                                 <p><strong>Описание:</strong> {book.description?.slice(0, 50)}...</p>
